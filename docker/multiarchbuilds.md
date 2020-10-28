@@ -30,8 +30,8 @@ You've been successfull.
 
 Those ressources may be helpful to go further:
 
-https://www.docker.com/blog/multi-arch-images/
-https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
-https://www.docker.com/blog/multi-arch-build-what-about-travis/
-https://medium.com/@artur.klauser/building-multi-architecture-docker-images-with-buildx-27d80f7e2408
+- https://www.docker.com/blog/multi-arch-images/
+- https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/
+- https://www.docker.com/blog/multi-arch-build-what-about-travis/
+- https://medium.com/@artur.klauser/building-multi-architecture-docker-images-with-buildx-27d80f7e2408
 
