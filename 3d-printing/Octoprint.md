@@ -1,11 +1,13 @@
 ## Initial setup upon first boot
-Update the system and change password and disable very unsecurely the sudo password
+Update the system, octoprint, pip and change password and disable very unsecurely the sudo password
 
     ssh-copy-id -i ~/.ssh/id_rsa.pub pi@octopi
     ssh pi@octopi
     passwd pi
     sudo apt update
     sudo apt full-upgrade
+    ~/oprint/bin/pip install -U octoprint
+    /home/pi/oprint/bin/python3 -m pip install --upgrade pip
     echo "pi ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/010_pi-nopassw
     sudo reboot
 
