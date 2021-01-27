@@ -26,6 +26,7 @@
     sudo service octoprint start
     
 Create a list of the previously installed plugins:
+
     grep -A $(grep octoprint.plugin.core <localfolder>/logs/octoprint.log | awk '{ print $8 }') octoprint.plugin.core octoprint/logs/octoprint.log | grep -v "(bundled)"
 
 Install all the plougins again via Settings > Plugin Manager > Get More...
