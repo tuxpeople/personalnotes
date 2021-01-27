@@ -11,17 +11,17 @@
     ssh pi@octopi.local
     sudo service octoprint stop
     exit
-    rsync -auve ssh pi@octoprint.local:/home/pi/.octoprint/ <localfolder>/
+    rsync -auve ssh pi@octopi.local:/home/pi/.octoprint/ <localfolder>/
     ssh pi@octopi.local
     sudo service octoprint start
     exit
     
 ## Backup wiederherstellen
-    ssh pi@octoprint.local
+    ssh pi@octopi.local
     sudo service octoprint stop
   	rm -rf /home/pi/.octoprint
     exit
-    rsync -auve ssh <localfolder>/ pi@octoprint.local:/home/pi/.octoprint/
+    rsync -auve ssh <localfolder>/ pi@octopi.local:/home/pi/.octoprint/
   	ssh pi@octoprint.local
     sudo service octoprint start
     
