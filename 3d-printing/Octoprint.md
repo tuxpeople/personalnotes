@@ -29,7 +29,7 @@ Disable power on usb ports to prevent power leakage to printer over usb:
     sudo service octoprint start
     exit
     
-## Backup wiederherstellen
+## Restore backup
     backupfolder="~/Downloads/octoprint"
     ssh pi@octopi
     sudo service octoprint stop
