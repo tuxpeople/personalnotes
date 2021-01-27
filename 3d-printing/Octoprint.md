@@ -1,11 +1,12 @@
 ## Initial setup upon first boot
 Update the system and change password and disable very unsecurely the sudo password
 
+    ssh-copy-id -i ~/.ssh/id_rsa.pub pi@octopi
     ssh pi@octopi
     passwd pi
     sudo apt update
     sudo apt full-upgrade
-    echo "pi ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/010_pi-nopasswd
+    echo "pi ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/010_pi-nopassw
     sudo reboot
 
 Disable power on usb ports to prevent power leakage to printer over usb:
