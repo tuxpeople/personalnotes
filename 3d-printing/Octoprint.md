@@ -1,10 +1,21 @@
 ## Initial setup upon first boot
+Update the system and change password
+
     ssh pi@octopi.local
     passwd pi
     sudo apt update
     sudo apt full-upgrade
     sudo reboot
 
+Disable power on usb ports to prevent power leakage to printer over usb:
+
+    ssh pi@octopi.local
+    sudo apt -y install libusb-1.0-0-dev
+    git clone https://github.com/mvp/uhubctl
+    cd uhubctl
+    make
+    sudo make install
+    
 ## Create backup
 (see https://community.octoprint.org/t/how-do-i-backup-my-octoprint-settings-on-octopi/1489)
 
