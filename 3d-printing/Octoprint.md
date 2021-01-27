@@ -1,39 +1,41 @@
 ## Initial setup upon first boot
-Update the system and change password
+Update the system and change password and disable very unsecurely the sudo password
 
-    ssh pi@octopi.local
+    ssh pi@octopi
     passwd pi
     sudo apt update
     sudo apt full-upgrade
+    echo "pi ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/010_pi-nopasswd
     sudo reboot
 
 Disable power on usb ports to prevent power leakage to printer over usb:
 
-    ssh pi@octopi.local
-    sudo apt -y install libusb-1.0-0-dev
-    git clone https://github.com/mvp/uhubctl
-    cd uhubctl
-    make
-    sudo make install
+    ssh pi@octopi
+    sudo wget https://raw.githubusercontent.com/tuxpeople/3dprinting/master/scripts/usb-poweroff.sh -O /usr/local/bin/usb-poweroff.sh
+    sudo chmod +x /usr/local/bin/usb-poweroff.sh
+    echo "@reboot root /usr/local/bin/usb-poweroff.sh" | sudo tee /etc/cron.d/usb-poweroff
+    sudo reboot
     
 ## Create backup
 (see https://community.octoprint.org/t/how-do-i-backup-my-octoprint-settings-on-octopi/1489)
 
-    ssh pi@octopi.local
+    backupfolder="~/Downloads/octoprint"
+    ssh pi@octopi
     sudo service octoprint stop
     exit
-    rsync -auve ssh pi@octopi.local:/home/pi/.octoprint/ <localfolder>/
-    ssh pi@octopi.local
+    rsync -auve ssh pi@octopi.local:/home/pi/.octoprint/ ${backupfolder}/
+    ssh pi@octopi
     sudo service octoprint start
     exit
     
 ## Backup wiederherstellen
-    ssh pi@octopi.local
+    backupfolder="~/Downloads/octoprint"
+    ssh pi@octopi
     sudo service octoprint stop
   	rm -rf /home/pi/.octoprint
     exit
-    rsync -auve ssh <localfolder>/ pi@octopi.local:/home/pi/.octoprint/
-  	ssh pi@octoprint.local
+    rsync -auve ssh ${backupfolder}/ pi@octopi.local:/home/pi/.octoprint/
+  	ssh pi@octoprint
     sudo service octoprint start
     
 Create a list of the previously installed plugins:
