@@ -22,7 +22,7 @@
     
 If you now go to https://hub.docker.com/r/$DOCKER_USERNAME/multiarch-example/tags you should see something like this:
 
-![Multi-Arch image on DockerHub](../images/multi_arch_image_on_dockerhub.png)
+![Multi-Arch image on DockerHub](../../../_images/multi_arch_image_on_dockerhub.png)
 
 You've been successfull.
 
