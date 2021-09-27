@@ -26,7 +26,7 @@ Disable power on usb ports to prevent power leakage to printer over usb:
     ssh pi@octopi
     sudo service octoprint stop
     # Create a list of the previously installed plugins:
-    grep -A $(grep octoprint.plugin.core .octoprint/logs/octoprint.log | awk '{ print $8 }') octoprint.plugin.core .octoprint/logs/octoprint.log | grep -v "(bundled)" > .octoprint/installed-plugins.txt
+    grep -A $(grep octoprint.plugin.core .octoprint/logs/octoprint.log | grep "registered with the system" | awk '{ print $8 }' | head -1) octoprint.plugin.core .octoprint/logs/octoprint.log | grep "oprint/lib" | grep -v "(bundled)" | grep -v INFO | sort -u > .octoprint/installed-plugins.txt
     exit
     rsync -auve ssh pi@octopi.local:/home/pi/.octoprint/ ${backupfolder}/
     ssh pi@octopi
